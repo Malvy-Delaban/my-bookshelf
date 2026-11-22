@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<title>My Bookshelf</title>
+<link rel="icon" type="image/x-icon" href="/assets/icon.ico">
+
+<!-- DISCORD PREVIEW -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://my-bookshelf.malvy-delaban.fr/">
+<meta property="og:title" content="Malvy's Bookshelf">
+<meta property="og:description" content="A simple book collection.">
+
+<!-- IMPORT FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<!-- INITIALIZE DATASETS -->
+<!-- <script src="dataset.js"></script> -->
+
+<!-- STYLE -->
+<style type="text/css">
+    html,
+    body {
+        width: 100%;
+        font-family: "Pinyon Script", cursive;
+    }
+
+    html {
+        background: radial-gradient(circle at 22% 26%, #020617 0%, transparent 44%), radial-gradient(circle at 56% 52%, #131921 0%, transparent 44%), radial-gradient(circle at 84% 76%, #0c1c1f 0%, transparent 44%), linear-gradient(135deg, #020617, #07070d);
+        color: white;
+        font-family: "Commissioner", sans-serif;
+        min-height: 100vh;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .titles-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-family: "Pinyon Script", cursive;
+        color: #ffdd84;
+        font-size: 4rem;
+        font-weight: normal;
+        background: -webkit-linear-gradient(#ffdd84, #c9a064);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .button-access-wishlist {
+        background: linear-gradient(rgb(102, 98, 78), rgb(112, 105, 81));
+        color: wheat;
+        border: transparent 0;
+        border-radius: 0.3rem;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 200ms;
+        width: fit-content;
+        margin-left: 1rem;
+        font-family: "Lugrasimo", cursive;
+    }
+
+    #my-collection {
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+    }
+</style>
+
+<!-- HTML -->
+
+<body>
+    <div class="titles-container">
+        <h1>My Bookshelf</h1>
+        <button class="button-access-wishlist" onclick="location.href='/wishlist.html';">Wishlist</button>
+    </div>
+    <div id="my-collection">
+        Coming soon...
+    </div>
+</body>
+
+<!-- SCRIPTS -->
+<script>
+</script>
+
+</html>

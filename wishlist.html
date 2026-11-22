@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<title>My Wishlist</title>
+<link rel="icon" type="image/x-icon" href="/assets/icon.ico">
+
+<!-- DISCORD PREVIEW -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://my-bookshelf.malvy-delaban.fr/">
+<meta property="og:title" content="Malvy's Bookshelf">
+<meta property="og:description" content="A simple book collection.">
+
+<!-- IMPORT FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<!-- INITIALIZE DATASETS -->
+<script src="wishlist.js"></script>
+
+<!-- STYLE -->
+<style type="text/css">
+    html,
+    body {
+        width: 100%;
+    }
+
+    html {
+        background: radial-gradient(circle at 22% 26%, #020617 0%, transparent 44%), radial-gradient(circle at 56% 52%, #131921 0%, transparent 44%), radial-gradient(circle at 84% 76%, #0c1c1f 0%, transparent 44%), linear-gradient(135deg, #020617, #07070d);
+        color: white;
+        font-family: "Commissioner", sans-serif;
+        min-height: 100vh;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .titles-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-family: "Pinyon Script", cursive;
+        color: #ffdd84;
+        font-size: 4rem;
+        font-weight: normal;
+        background: -webkit-linear-gradient(#ffdd84, #c9a064);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .button-access-wishlist {
+        background: linear-gradient(rgb(102, 98, 78), rgb(112, 105, 81));
+        color: wheat;
+        border: transparent 0;
+        border-radius: 0.3rem;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 200ms;
+        width: fit-content;
+        margin-left: 1rem;
+        font-family: "Lugrasimo", cursive;
+    }
+
+    .button-access-wishlist:hover {
+        background: linear-gradient(rgb(102, 83, 78), rgb(112, 90, 81));
+        color: rgb(245, 189, 179);
+        cursor: pointer;
+        transform: scale(1.05) rotate(1.5deg);
+    }
+
+    #my-collection {
+        width: calc(100% - 5rem);
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .book-div {
+        width: 20rem;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 0.5rem;
+        padding: 2rem;
+    }
+
+    .book-div-lulu {
+        background: linear-gradient(#411c3e63, #240d2163);
+        border: 0.2rem solid rgba(255, 255, 255, 0.068);
+    }
+
+    .book-div-malvy {
+        background: linear-gradient(#23411c63, #0d240d63);
+        border: 0.2rem solid rgba(255, 255, 255, 0.068);
+    }
+
+    .book-div-both {
+        background: linear-gradient(#411c1c63, #240d0d63);
+        border: 0.2rem solid rgba(255, 255, 255, 0.068);
+    }
+
+    .book-cover {
+        height: 25rem;
+        width: auto;
+    }
+
+    .book-title {
+        text-align: center;
+        text-wrap: wrap;
+        color: wheat;
+        height: 3rem;
+    }
+
+    .book-details {
+        text-align: center;
+        text-wrap: wrap;
+        font-size: 0.9rem;
+        font-family: "Lugrasimo", cursive;
+        color: wheat;
+    }
+
+    .book-margin-top {
+        margin-top: 1rem;
+    }
+
+    .book-hype {
+        margin-top: 0.5rem;
+        text-align: center;
+        text-wrap: wrap;
+        font-size: 0.8rem;
+        font-family: "Lugrasimo", cursive;
+        color: wheat;
+    }
+
+    h3 {
+        margin-top: 0;
+        font-size: 1rem;
+        font-family: "Lugrasimo", cursive;
+    }
+</style>
+
+<!-- HTML -->
+
+<body>
+    <div class="titles-container">
+        <h1>My Wishlist</h1>
+        <button class="button-access-wishlist" onclick="location.href='/index.html';">Collection</button>
+    </div>
+    <div id="my-collection">
+    </div>
+</body>
+
+<!-- SCRIPTS -->
+<script>
+    function createElement(book) {
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book-div");
+        if (book.wantsIt.lulu && book.wantsIt.malvy)
+            bookDiv.classList.add("book-div-both");
+        else if (book.wantsIt.malvy)
+            bookDiv.classList.add("book-div-malvy");
+        else
+            bookDiv.classList.add("book-div-lulu");
+
+        const bookTitle = document.createElement("h3");
+        bookTitle.classList.add("book-title");
+        bookTitle.innerHTML = book.name;
+
+        const bookCover = document.createElement("img");
+        bookCover.classList.add("book-cover");
+        bookCover.src = `assets/covers/${book.pic}`;
+        
+        const bookAuthor = document.createElement("div");
+        bookAuthor.classList.add("book-margin-top");
+        bookAuthor.classList.add("book-details");
+        bookAuthor.innerHTML = `Author: ${book.author}`;
+        
+        const bookPublisher = document.createElement("div");
+        bookPublisher.classList.add("book-details");
+        bookPublisher.innerHTML = `Publisher: ${book.publisher}`;
+        
+        const bookPrice = document.createElement("div");
+        bookPrice.classList.add("book-details");
+        bookPrice.classList.add("book-margin-top");
+        bookPrice.innerHTML = `Price: ${book.price}€`;
+
+        const bookDateAdded = document.createElement("div");
+        bookDateAdded.classList.add("book-details");
+        bookDateAdded.classList.add("book-date-added");
+        bookDateAdded.innerHTML = `Added on: ${book.dateAdded}`;
+
+        const bookHype = document.createElement("div");
+        bookHype.classList.add("book-hype");
+        bookHype.classList.add("book-margin-top");
+        if (book.wantsIt.lulu && book.wantsIt.malvy)
+            bookHype.innerHTML = `Wanted by both Lulu & Malvy`;
+        else if (book.wantsIt.malvy)
+            bookHype.innerHTML = `Wanted by Malvy`;
+        else
+            bookHype.innerHTML = `Wanted by Lulu`;
+
+        bookDiv.appendChild(bookTitle);
+        bookDiv.appendChild(bookCover);
+        bookDiv.appendChild(bookAuthor);
+        bookDiv.appendChild(bookPublisher);
+        bookDiv.appendChild(bookPrice);
+        bookDiv.appendChild(bookDateAdded);
+        bookDiv.appendChild(bookHype);
+        return bookDiv;
+    }
+
+    function fillCollection() {
+        const collectionDiv = document.getElementById("my-collection");
+
+        sortedWishlist.forEach(element => {
+            collectionDiv.appendChild(createElement(element));
+        });
+    }
+
+    var sortedWishlist = wishlist;
+    fillCollection();
+</script>
+
+</html>
