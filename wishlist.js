@@ -198,5 +198,65 @@ const wishlist = [
             "Roman"
         ],
         dateAdded: "22/11/2026"
+    },
+    {
+        name: "La Bibliothèque de l'Esotérisme - Tarot",
+        author: "Jessica Hundley",
+        publisher: "Taschen",
+        pic: "esoterisme_tarot.png",
+        price: 35.00,
+        wantsIt: {
+            lulu: 0,
+            malvy: 2,
+        },
+        tags: [
+            "Encyclopédie"
+        ],
+        dateAdded: "22/11/2026"
+    },
+    {
+        name: "La Bibliothèque de l'Esotérisme - Astrologie",
+        author: "Andrea Richards",
+        publisher: "Taschen",
+        pic: "esoterisme_astrologie.png",
+        price: 35.00,
+        wantsIt: {
+            lulu: 0,
+            malvy: 2,
+        },
+        tags: [
+            "Encyclopédie"
+        ],
+        dateAdded: "22/11/2026"
+    },
+    {
+        name: "La Bibliothèque de l'Esotérisme - Sorcellerie",
+        author: "Jessica Hundley",
+        publisher: "Taschen",
+        pic: "esoterisme_sorcellerie.png",
+        price: 35.00,
+        wantsIt: {
+            lulu: 0,
+            malvy: 2,
+        },
+        tags: [
+            "Encyclopédie"
+        ],
+        dateAdded: "22/11/2026"
+    },
+    {
+        name: "Piranèse",
+        author: "Susanna Clarke",
+        publisher: "-",
+        pic: "piranese.jpg",
+        price: 20.00,
+        wantsIt: {
+            lulu: 0,
+            malvy: 2,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "23/11/2026"
     }
 ];

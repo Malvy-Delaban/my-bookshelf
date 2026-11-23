@@ -15,7 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Pinyon+Script&display=swap" rel="stylesheet">
 
 <!-- INITIALIZE DATASETS -->
-<!-- <script src="dataset.js"></script> -->
+<script src="collection.js"></script>
+<script src="wishlist.js"></script>
 
 <!-- STYLE -->
 <style type="text/css">
@@ -79,11 +80,121 @@
     }
 
     #my-collection {
-        width: 100%;
-        margin-top: 2rem;
+        width: calc(100% - 5rem);
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .book-div-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        background: linear-gradient(#1c224163, #0f0d2463);
+        border: 0.2rem solid rgba(255, 255, 255, 0.068);
+    }
+
+    .book-div {
+        width: 20rem;
+        height: auto;
         display: flex;
         justify-content: center;
-        font-size: 2rem;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .book-cover {
+        height: 25rem;
+        width: auto;
+    }
+
+    .book-title {
+        text-align: center;
+        text-wrap: wrap;
+        color: wheat;
+        height: 3rem;
+    }
+
+    .book-details {
+        text-align: center;
+        text-wrap: wrap;
+        font-size: 0.9rem;
+        font-family: "Lugrasimo", cursive;
+        color: wheat;
+    }
+
+    .book-margin-top {
+        margin-top: 1rem;
+    }
+
+    .book-hype {
+        margin-top: 0.5rem;
+        text-align: center;
+        text-wrap: wrap;
+        font-size: 0.8rem;
+        font-family: "Lugrasimo", cursive;
+        color: wheat;
+    }
+
+    h3 {
+        margin-top: 0;
+        font-size: 1rem;
+        font-family: "Lugrasimo", cursive;
+    }
+
+    .book-collection-container {
+        width: 24.4rem;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: start;
+    }
+
+    .book-collection-volumes {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        justify-content: left;
+        align-content: flex-start;
+    }
+
+    .volume-square {
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 0.3rem;
+    }
+
+    .volume-owned {
+        background-color: rgb(71, 167, 71);
+        border: solid rgb(71, 167, 71) 3px;
+    }
+
+    .volume-unowned {
+        background-color: rgb(27, 25, 34);
+        border: solid rgba(255, 255, 255, 0.1) 3px;
+    }
+
+    .book-collection-status {
+        width: 100%;
+        margin: 0;
+        font-weight: 300;
+        color: wheat;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .color-status-white {
+        color: white;
     }
 </style>
 
@@ -95,12 +206,120 @@
         <button class="button-access-wishlist" onclick="location.href='/wishlist.html';">Wishlist</button>
     </div>
     <div id="my-collection">
-        Coming soon...
     </div>
 </body>
 
 <!-- SCRIPTS -->
 <script>
+
+    function hasVolume(targetVolume, volumes) {
+        return volumes.some((entry) => {
+            if (typeof entry === "string" && entry.includes("-")) {
+                const [min, max] = entry.split("-").map(Number);
+                return targetVolume >= min && targetVolume <= max;
+            }
+
+            return Number(entry) === targetVolume;
+        });
+    }
+
+    function getCompletionPercentage(last_volume, volumes) {
+        var countOwned = 0;
+
+        for (var i = 1; i <= last_volume; i++)
+            countOwned += (hasVolume(i, volumes)?1:0);
+        return (countOwned / last_volume * 100).toFixed(1);
+    }
+
+    function createElement(book) {
+        const bookDivContainer = document.createElement("div");
+        bookDivContainer.classList.add("book-div-container");
+
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book-div");
+
+        const bookTitle = document.createElement("h3");
+        bookTitle.classList.add("book-title");
+        bookTitle.innerHTML = book.name;
+
+        const bookCover = document.createElement("img");
+        bookCover.classList.add("book-cover");
+        bookCover.src = `assets/covers/${book.pic}`;
+
+        const bookAuthor = document.createElement("div");
+        bookAuthor.classList.add("book-margin-top");
+        bookAuthor.classList.add("book-details");
+        bookAuthor.innerHTML = `Author: ${book.author}`;
+
+        const bookPublisher = document.createElement("div");
+        bookPublisher.classList.add("book-details");
+        bookPublisher.innerHTML = `Publisher: ${book.publisher}`;
+
+        const bookDateAdded = document.createElement("div");
+        bookDateAdded.classList.add("book-details");
+        bookDateAdded.classList.add("book-date-added");
+        bookDateAdded.innerHTML = `Added on: ${book.dateAdded}`;
+
+
+        bookDiv.appendChild(bookTitle);
+        bookDiv.appendChild(bookCover);
+        bookDiv.appendChild(bookAuthor);
+        bookDiv.appendChild(bookPublisher);
+        bookDiv.appendChild(bookDateAdded);
+        bookDivContainer.appendChild(bookDiv);
+
+        if (book.collection_state) {
+            const bookCollectionContainer = document.createElement("div");
+            bookCollectionContainer.classList.add("book-collection-container");
+            
+            const bookCollectionStatus = document.createElement("h3");
+            bookCollectionStatus.classList.add("book-collection-status");
+            bookCollectionStatus.innerHTML = `<span>Serie status:</span><span class="color-status-white">${book.collection_state.is_finished?"Finished":"On going"}</span>`;
+            
+            const bookCollectionCompletion = document.createElement("h3");
+            bookCollectionCompletion.classList.add("book-collection-status");
+            bookCollectionCompletion.innerHTML = `<span>Completion status:</span><span class="color-status-white">${getCompletionPercentage(book.collection_state.last_volume_published, book.collection_state.volumes)}%</span>`;
+            
+            const bookCollectionLastUpdated = document.createElement("h3");
+            bookCollectionLastUpdated.classList.add("book-collection-status");
+            bookCollectionLastUpdated.innerHTML = `<span>Collection updated on:</span><span class="color-status-white">${book.collection_state.updated_on}</span>`;
+            
+            const bookCollectionVolumes = document.createElement("div");
+            bookCollectionVolumes.classList.add("book-collection-volumes", "book-margin-top");
+
+            for (var i = 1; i <= book.collection_state.last_volume_published; i++) {
+                const volume = document.createElement("div");
+                volume.classList.add("volume-square");
+                if (hasVolume(i, book.collection_state.volumes)) {
+                    volume.classList.add("volume-owned");
+                    volume.title = `Volume ${i} is owned`;
+                }
+                else {
+                    volume.title = `Volume ${i} isn't owned`;
+                    volume.classList.add("volume-unowned");
+                }
+                bookCollectionVolumes.appendChild(volume);
+            }
+            bookCollectionContainer.appendChild(bookCollectionStatus);
+            bookCollectionContainer.appendChild(bookCollectionCompletion);
+            bookCollectionContainer.appendChild(bookCollectionLastUpdated);
+            bookCollectionContainer.appendChild(bookCollectionVolumes);
+            bookDivContainer.appendChild(bookCollectionContainer);
+        }
+
+        return bookDivContainer;
+    }
+
+    function fillCollection() {
+        const collectionDiv = document.getElementById("my-collection");
+
+        sortedWishlist.forEach(element => {
+            collectionDiv.appendChild(createElement(element));
+        });
+    }
+
+    var sortedWishlist = collection;
+    fillCollection();
 </script>
 
 </html>
