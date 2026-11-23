@@ -56,6 +56,33 @@ const collection = [
         dateAdded: "23/11/2026"
     },
     {
+        name: "World of WarCraft : Sylvanas",
+        author: "Christie Golden",
+        publisher: "Bragelonne",
+        pic: "sylvanas.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "23/11/2026"
+    },
+    {
+        name: "L'Ange du Chaos",
+        author: "Michel Robert",
+        publisher: "Pocket",
+        pic: "ange_chaos.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ]
+    },
+    {
         name: "One Piece",
         author: "Eiichiro Oda",
         publisher: "Glenat",
@@ -346,19 +373,6 @@ const collection = [
             last_volume_published: 24,
             is_finished: true
         }
-    },
-    {
-        name: "L'Ange du Chaos",
-        author: "Michel Robert",
-        publisher: "Pocket",
-        pic: "ange_chaos.jpg",
-        ownsIt: {
-            lulu: false,
-            malvy: true,
-        },
-        tags: [
-            "Roman"
-        ]
     },
     {
         name: "Le Hobbit",
