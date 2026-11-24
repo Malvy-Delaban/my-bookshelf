@@ -10,8 +10,7 @@ const collection = [
         },
         tags: [
             "Roman"
-        ],
-        dateAdded: "23/11/2026"
+        ]
     },
     {
         name: "Le Roi en Jaune",
@@ -140,7 +139,7 @@ const collection = [
         dateAdded: "23/11/2026",
         collection_state: {
             updated_on: "23/11/2026",
-            volumes: ["1"],
+            volumes: ["1-34"],
             last_volume_published: 43,
             is_finished: false
         }
@@ -354,6 +353,27 @@ const collection = [
         }
     },
     {
+        name: "Vinland Saga",
+        author: "Makoto Yukimura",
+        publisher: "Kurokawa",
+        pic: "vinland_saga_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        dateAdded: "24/11/2026",
+        tags: [
+            "Manga",
+            "Seinen"
+        ],
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-3"],
+            last_volume_published: 29,
+            is_finished: true
+        }
+    },
+    {
         name: "Chainsaw Man",
         author: "Tatsuki Fujimoto",
         publisher: "Kaze",
@@ -383,6 +403,7 @@ const collection = [
             lulu: true,
             malvy: false,
         },
+        dateAdded: "23/11/2026",
         tags: [
             "Roman"
         ]
@@ -396,6 +417,7 @@ const collection = [
             lulu: false,
             malvy: true,
         },
+        dateAdded: "23/11/2026",
         tags: [
             "BD / Comics"
         ]
@@ -409,6 +431,7 @@ const collection = [
             lulu: true,
             malvy: false,
         },
+        dateAdded: "23/11/2026",
         tags: [
             "Artbook"
         ]
@@ -422,6 +445,7 @@ const collection = [
             lulu: false,
             malvy: true,
         },
+        dateAdded: "23/11/2026",
         tags: [
             "Artbook"
         ]
@@ -435,8 +459,505 @@ const collection = [
             lulu: false,
             malvy: true,
         },
+        dateAdded: "23/11/2026",
         tags: [
             "Artbook"
         ]
+    },
+    {
+        name: "La Grand Aventure de Pikachu",
+        author: "Joseph Tobin",
+        publisher: "Pix'n Love",
+        pic: "grande_aventure_pikachu.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        dateAdded: "24/11/2026",
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ]
+    },
+    {
+        name: "Dark Souls Par-Delà la Mort Volume 1",
+        author: "Damien Mecheri",
+        publisher: "Third Edition",
+        pic: "dark_souls_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        dateAdded: "23/11/2026",
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ]
+    },
+    {
+        name: "Dark Souls Par-Delà la Mort Volume 2",
+        author: "Damien Mecheri",
+        publisher: "Third Edition",
+        pic: "dark_souls_02.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        dateAdded: "24/11/2026",
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ]
+    },
+    {
+        name: "Entre les Mondes de Death Stranding",
+        author: "Anthony Fournier",
+        publisher: "Third Edition",
+        pic: "death_stranding.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        dateAdded: "24/11/2026",
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ]
+    },
+    {
+        name: "Léviathan",
+        author: "Shiro Kuroi",
+        publisher: "Ki-oon",
+        pic: "leviathan_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Manga",
+            "Seinen"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-2"],
+            last_volume_published: 3,
+            is_finished: true
+        }
+    },
+    {
+        name: "World of Warcraft Chroniques Volume 01",
+        author: "Chris Metzen",
+        publisher: "Panini Books",
+        pic: "wow_chroniques_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Dans le Cerveau du Gamer",
+        author: "Celia Holdent",
+        publisher: "Dunod",
+        pic: "cerveau_gamer.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Morpho Mammifères",
+        author: "Michel Lauricella",
+        publisher: "Editions Eyrolles",
+        pic: "morpho_mammiferes.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Art"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "La Terreur Féministe",
+        author: "Irène Rose",
+        publisher: "Editions Divergences",
+        pic: "terreur_feministe.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Politique"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Moi les hommes, je les Déteste",
+        author: "Pauline Harmange",
+        publisher: "Seuil",
+        pic: "les_hommes_je_les_deteste.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Politique"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Le Cauchemar d'Innsmouth",
+        author: "H.P. Lovecraft",
+        publisher: "J'ai Lu",
+        pic: "cauchemar_innsmouth.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "L'art du Game Design",
+        author: "Jesse Schell",
+        publisher: "Dunod",
+        pic: "art_game_design.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Jeux Vidéos"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Les 1001 Merveilles de l'Architecture qu'il Faut Avoir Vu dans sa Vie",
+        author: "François Barré",
+        publisher: "Flammarion",
+        pic: "1001_architectures.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Art"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Les 1001 Tableaux qu'il Faut Avoir Vu dans sa Vie",
+        author: "Pierre Assouline",
+        publisher: "Flammarion",
+        pic: "1001_tableaux.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Art"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Strange Houses",
+        author: "Uketsu",
+        publisher: "Harpervia",
+        pic: "strange_houses.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman",
+            "Illustrated"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Dagon",
+        author: "H.P. Lovecraft",
+        publisher: "J'ai Lu",
+        pic: "dagon.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Le Prince des Ténèbres",
+        author: "Jeannine Frost",
+        publisher: "Bragelonne",
+        pic: "prince_tenebres_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-2"],
+            last_volume_published: 4,
+            is_finished: true
+        }
+    },
+    {
+        name: "Knights of Sidonia",
+        author: "Tsutomu Nihei",
+        publisher: "Glenat",
+        pic: "kingts_sidonia_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Manga",
+            "Seinen"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-2"],
+            last_volume_published: 15,
+            is_finished: true
+        }
+    },
+    {
+        name: "Huger Games",
+        author: "Suzanne Collins",
+        publisher: "Pocket Jeunesse",
+        pic: "hunger_games_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-3"],
+            last_volume_published: 3,
+            is_finished: true
+        }
+    },
+    {
+        name: "Le Prince des Nuages",
+        author: "Christopher Galfard",
+        publisher: "Pocket Jeunesse",
+        pic: "prince_nuages_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: [1],
+            last_volume_published: 3,
+            is_finished: true
+        }
+    },
+    {
+        name: "Percy Jackson",
+        author: "Rick Riordan",
+        publisher: "Le Livre de Poche Jeunesse",
+        pic: "percy_jackson_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-4"],
+            last_volume_published: 7,
+            is_finished: false
+        }
+    },
+    {
+        name: "Dracula",
+        author: "Bram Stoker",
+        publisher: "L'Ecole des Loisirs",
+        pic: "dracula.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "L'Odyssée",
+        author: "Homère",
+        publisher: "L'Ecole des Loisirs",
+        pic: "odyssee.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "L'Iliade",
+        author: "Homère",
+        publisher: "L'Ecole des Loisirs",
+        pic: "iliade.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Courbet",
+        author: "Fabrice Masanès",
+        publisher: "Taschen",
+        pic: "courbet.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Encyclopédie",
+            "Art"
+        ],
+        dateAdded: "24/11/2026"
+    },
+    {
+        name: "Chroniques du Monde Emergé",
+        author: "Licia Troisi",
+        publisher: "Pocket Jeunesse",
+        pic: "chronique_monde_emerge_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Roman"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["2-3"],
+            last_volume_published: 4,
+            is_finished: true
+        }
+    },
+    {
+        name: "Les Légendaires",
+        author: "Patrick Sobral",
+        publisher: "Delcourt",
+        pic: "legendaires_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "BD / Comics"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: [1, 10, "12-14"],
+            last_volume_published: 23,
+            is_finished: true
+        }
+    },
+    {
+        name: "Les Légendaires Origines",
+        author: "Patrick Sobral",
+        publisher: "Delcourt",
+        pic: "legendaires_origines_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "BD / Comics"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-2"],
+            last_volume_published: 8,
+            is_finished: false
+        }
+    },
+    {
+        name: "Blame!",
+        author: "Tsutomu Nihei",
+        publisher: "Glenat",
+        pic: "blame_01.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Manga",
+            "Seinen"
+        ],
+        dateAdded: "24/11/2026",
+        collection_state: {
+            updated_on: "24/11/2026",
+            volumes: ["1-6"],
+            last_volume_published: 6,
+            is_finished: true
+        }
+    },
+    {
+        name: "Blame! - Tome 0",
+        author: "Tsutomu Nihei",
+        publisher: "Glenat",
+        pic: "blame_00.jpg",
+        ownsIt: {
+            lulu: false,
+            malvy: true,
+        },
+        tags: [
+            "Manga",
+            "Seinen"
+        ],
+        dateAdded: "24/11/2026"
     }
 ];
