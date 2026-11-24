@@ -9,7 +9,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Cosmic Horor"
         ]
     },
     {
@@ -22,7 +23,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Cosmic Horor"
         ],
         dateAdded: "23/11/2026"
     },
@@ -50,7 +52,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Dark Fantasy"
         ],
         dateAdded: "23/11/2026"
     },
@@ -64,7 +67,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Jeux Vidéos"
         ],
         dateAdded: "23/11/2026"
     },
@@ -78,7 +82,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Dark Fantasy"
         ]
     },
     {
@@ -321,7 +326,8 @@ const collection = [
         },
         tags: [
             "Manga",
-            "Seinen"
+            "Seinen",
+            "Comédie"
         ],
         dateAdded: "23/11/2026",
         collection_state: {
@@ -405,7 +411,8 @@ const collection = [
         },
         dateAdded: "23/11/2026",
         tags: [
-            "Roman"
+            "Roman",
+            "Fantasy"
         ]
     },
     {
@@ -419,7 +426,7 @@ const collection = [
         },
         dateAdded: "23/11/2026",
         tags: [
-            "BD / Comics"
+            "BD & Comics"
         ]
     },
     {
@@ -433,7 +440,8 @@ const collection = [
         },
         dateAdded: "23/11/2026",
         tags: [
-            "Artbook"
+            "Artbook",
+            "Jeux Vidéos"
         ]
     },
     {
@@ -447,7 +455,8 @@ const collection = [
         },
         dateAdded: "23/11/2026",
         tags: [
-            "Artbook"
+            "Artbook",
+            "Art"
         ]
     },
     {
@@ -461,7 +470,9 @@ const collection = [
         },
         dateAdded: "23/11/2026",
         tags: [
-            "Artbook"
+            "Artbook",
+            "Art",
+            "Manga"
         ]
     },
     {
@@ -628,7 +639,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Cosmic Horor"
         ],
         dateAdded: "24/11/2026"
     },
@@ -702,7 +714,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Cosmic Horor"
         ],
         dateAdded: "24/11/2026"
     },
@@ -716,7 +729,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Romance"
         ],
         dateAdded: "24/11/2026",
         collection_state: {
@@ -874,7 +888,8 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "Roman"
+            "Roman",
+            "Fantasy"
         ],
         dateAdded: "24/11/2026",
         collection_state: {
@@ -894,7 +909,7 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "BD / Comics"
+            "BD & Comics"
         ],
         dateAdded: "24/11/2026",
         collection_state: {
@@ -914,7 +929,7 @@ const collection = [
             malvy: true,
         },
         tags: [
-            "BD / Comics"
+            "BD & Comics"
         ],
         dateAdded: "24/11/2026",
         collection_state: {

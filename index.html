@@ -81,7 +81,7 @@
 
     #my-collection {
         width: calc(100% - 5rem);
-        padding: 2.5rem;
+        padding: 0 2.5rem 2rem;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -196,6 +196,71 @@
     .color-status-white {
         color: white;
     }
+
+    .filter-container {
+        width: calc(100% - 20rem);
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        margin: 2rem 10rem 1rem;
+        font-family: "Lugrasimo", cursive;
+        color: wheat;
+        align-items: center;
+    }
+
+    .filter-button {
+        background-color: black;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        color: white;
+    }
+
+    .filter-button:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .roman-filter-color {
+        background-color: rgb(115, 134, 96);
+    }
+
+    .comics-filter-color {
+        background-color: rgb(96, 134, 116);
+    }
+
+    .manga-filter-color {
+        background-color: rgb(96, 122, 134);
+    }
+
+    .encyclopedie-filter-color {
+        background-color: rgb(102, 96, 134);
+    }
+
+    .jeux-filter-color {
+        background-color: rgb(133, 96, 134);
+    }
+
+    .art-filter-color {
+        background-color: rgb(102, 78, 81);
+    }
+
+    .unselected-filter {
+        opacity: 50%;
+    }
+
+    .book-number-container {
+        width: calc(100% - 20rem);
+        display: flex;
+        flex-direction: row;
+        gap: 0.6rem;
+        margin: 0 2rem 2rem;
+        font-family: "Lugrasimo", cursive;
+        color: wheat;
+        align-items: center;
+    }
+
+    .book-number {
+    }
 </style>
 
 <!-- HTML -->
@@ -204,6 +269,27 @@
     <div class="titles-container">
         <h1>My Bookshelf</h1>
         <button class="button-access-wishlist" onclick="location.href='/wishlist.html';">Wishlist</button>
+        <div class="filter-container">
+            <span>Filter by:</span>
+            <div id="roman-filter" class="filter-button unselected-filter roman-filter-color"
+                onClick="filterBy('Roman')">Roman</div>
+            <div id="comics-filter" class="filter-button unselected-filter comics-filter-color"
+                onClick="filterBy('Comics')">BD & Comics</div>
+            <div id="manga-filter" class="filter-button unselected-filter manga-filter-color"
+                onClick="filterBy('Manga')">Manga</div>
+            <div id="encyclopedie-filter" class="filter-button unselected-filter encyclopedie-filter-color"
+                onClick="filterBy('Encyclopedie')">Encyclopedia</div>
+            <div id="jeux-filter" class="filter-button unselected-filter jeux-filter-color"
+                onClick="filterBy('JeuxVideos')">Video Games</div>
+            <div id="art-filter" class="filter-button unselected-filter art-filter-color" onClick="filterBy('Art')">Art
+            </div>
+        </div>
+        <div class="book-number-container">
+            <span id="book-number">0</span>
+            <span>Books found from</span>
+            <span id="series-number">0</span>
+            <span>different series</span>
+        </div>
     </div>
     <div id="my-collection">
     </div>
@@ -211,7 +297,6 @@
 
 <!-- SCRIPTS -->
 <script>
-
     function hasVolume(targetVolume, volumes) {
         return volumes.some((entry) => {
             if (typeof entry === "string" && entry.includes("-")) {
@@ -227,8 +312,16 @@
         var countOwned = 0;
 
         for (var i = 1; i <= last_volume; i++)
-            countOwned += (hasVolume(i, volumes)?1:0);
+            countOwned += (hasVolume(i, volumes) ? 1 : 0);
         return (countOwned / last_volume * 100).toFixed(1);
+    }
+
+    function getVolumeNumber(last_volume, volumes) {
+        var countOwned = 0;
+
+        for (var i = 1; i <= last_volume; i++)
+            countOwned += (hasVolume(i, volumes) ? 1 : 0);
+        return countOwned;
     }
 
     function createElement(book) {
@@ -271,19 +364,19 @@
         if (book.collection_state) {
             const bookCollectionContainer = document.createElement("div");
             bookCollectionContainer.classList.add("book-collection-container");
-            
+
             const bookCollectionStatus = document.createElement("h3");
             bookCollectionStatus.classList.add("book-collection-status");
-            bookCollectionStatus.innerHTML = `<span>Serie status:</span><span class="color-status-white">${book.collection_state.is_finished?"Finished":"On going"}</span>`;
-            
+            bookCollectionStatus.innerHTML = `<span>Serie status:</span><span class="color-status-white">${book.collection_state.is_finished ? "Finished" : "On going"}</span>`;
+
             const bookCollectionCompletion = document.createElement("h3");
             bookCollectionCompletion.classList.add("book-collection-status");
             bookCollectionCompletion.innerHTML = `<span>Completion status:</span><span class="color-status-white">${getCompletionPercentage(book.collection_state.last_volume_published, book.collection_state.volumes)}%</span>`;
-            
+
             const bookCollectionLastUpdated = document.createElement("h3");
             bookCollectionLastUpdated.classList.add("book-collection-status");
             bookCollectionLastUpdated.innerHTML = `<span>Collection updated on:</span><span class="color-status-white">${book.collection_state.updated_on}</span>`;
-            
+
             const bookCollectionVolumes = document.createElement("div");
             bookCollectionVolumes.classList.add("book-collection-volumes", "book-margin-top");
 
@@ -313,12 +406,127 @@
     function fillCollection() {
         const collectionDiv = document.getElementById("my-collection");
 
-        sortedWishlist.forEach(element => {
-            collectionDiv.appendChild(createElement(element));
+        sortedCollection.forEach(element => {
+            if (element.isDisplayed)
+                collectionDiv.appendChild(createElement(element));
+        });
+        displayBookNumbers();
+    }
+
+    function resetDisplay() {
+        const containerDiv = document.getElementById("my-collection");
+        containerDiv.innerHTML = '';
+    }
+
+    function applyFilter() {
+        resetDisplay();
+        defaultSelection();
+
+        collection.forEach(book => {
+            console.log(book.tags.includes("Roman"));
+            if (!book.tags.includes("Roman") && filterStatusRoman)
+                book.isDisplayed = false;
+            else if (!book.tags.includes("BD & Comics") && filterStatusComics)
+                book.isDisplayed = false;
+            else if (!book.tags.includes("Manga") && filterStatusManga)
+                book.isDisplayed = false;
+            else if (!book.tags.includes("Encyclopédie") && filterStatusEncyclopedie)
+                book.isDisplayed = false;
+            else if (!book.tags.includes("Jeux Vidéos") && filterStatusJeuxVideos)
+                book.isDisplayed = false;
+            else if (!book.tags.includes("Art") && filterStatusArt)
+                book.isDisplayed = false;
+        });
+        fillCollection();
+    }
+
+    function defaultSelection() {
+        sortedCollection = collection;
+        sortedCollection.forEach(book => {
+            book.isDisplayed = true;
         });
     }
 
-    var sortedWishlist = collection;
+    function filterBy(filter) {
+        if (filter == "Roman") {
+            filterStatusRoman = !filterStatusRoman;
+            const button = document.getElementById("roman-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusRoman)
+                button.classList.add("unselected-filter");
+        }
+        if (filter == "Comics") {
+            filterStatusComics = !filterStatusComics;
+            const button = document.getElementById("comics-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusComics)
+                button.classList.add("unselected-filter");
+        } if (filter == "Manga") {
+            filterStatusManga = !filterStatusManga;
+            const button = document.getElementById("manga-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusManga)
+                button.classList.add("unselected-filter");
+        } if (filter == "Encyclopedie") {
+            filterStatusEncyclopedie = !filterStatusEncyclopedie;
+            const button = document.getElementById("encyclopedie-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusEncyclopedie)
+                button.classList.add("unselected-filter");
+        } if (filter == "JeuxVideos") {
+            filterStatusJeuxVideos = !filterStatusJeuxVideos;;
+            const button = document.getElementById("jeux-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusJeuxVideos)
+                button.classList.add("unselected-filter");
+        } if (filter == "Art") {
+            filterStatusArt = !filterStatusArt;;
+            const button = document.getElementById("art-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusArt)
+                button.classList.add("unselected-filter");
+        }
+        applyFilter();
+    }
+
+    function getBookNumber() {
+        var count = 0;
+        sortedCollection.forEach(book => {
+            if (book.isDisplayed && book.collection_state) {
+                count += getVolumeNumber(book.collection_state.last_volume_published, book.collection_state.volumes);
+            } else if (book.isDisplayed)
+                count++;
+        });
+        return count;
+    }
+
+    function getSerieNumber() {
+        var count = 0;
+        sortedCollection.forEach(book => {
+            if (book.isDisplayed)
+                count++;
+        });
+        return count;
+    }
+
+    function displayBookNumbers() {
+        const bookNumber = document.getElementById("book-number");
+        const seriesNumber = document.getElementById("series-number");
+
+        bookNumber.innerHTML = getBookNumber();
+        seriesNumber.innerHTML = getSerieNumber();
+    }
+
+    // FILTERS
+    var filterStatusRoman = false;
+    var filterStatusComics = false;
+    var filterStatusManga = false;
+    var filterStatusEncyclopedie = false;
+    var filterStatusJeuxVideos = false;
+    var filterStatusArt = false;
+
+    var sortedCollection = collection;
+    defaultSelection();
     fillCollection();
 </script>
 
