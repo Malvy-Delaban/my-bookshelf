@@ -38,6 +38,16 @@
         padding: 0;
     }
 
+    h1::before {
+        content: '';
+        padding: 1rem;
+    }
+
+    h1::after {
+        content: '';
+        padding: 1rem;
+    }
+
     .titles-container {
         width: 100%;
         display: flex;
@@ -293,9 +303,11 @@
             <div id="art-filter" class="filter-button unselected-filter art-filter-color" onClick="filterBy('Art')">Art
             </div>
             <span class="dot-separator">•</span>
-            <div id="malvy-filter" class="filter-button unselected-filter malvy-filter-color" onClick="filterBy('Malvy')">Malvy
+            <div id="malvy-filter" class="filter-button unselected-filter malvy-filter-color"
+                onClick="filterBy('Malvy')">Malvy
             </div>
-            <div id="lulu-filter" class="filter-button unselected-filter lulu-filter-color" onClick="filterBy('Lulu')">Lulu
+            <div id="lulu-filter" class="filter-button unselected-filter lulu-filter-color" onClick="filterBy('Lulu')">
+                Lulu
             </div>
         </div>
         <div class="book-number-container">
