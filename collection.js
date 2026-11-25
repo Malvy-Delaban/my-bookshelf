@@ -239,8 +239,8 @@ const collection = [
         publisher: "Sarbacane",
         pic: "enfants_mer_01.jpg",
         ownsIt: {
-            lulu: true,
-            malvy: false,
+            lulu: false,
+            malvy: true,
         },
         tags: [
             "Manga",
@@ -721,7 +721,7 @@ const collection = [
     },
     {
         name: "Le Prince des Ténèbres",
-        author: "Jeannine Frost",
+        author: "Jeaniene Frost",
         publisher: "Bragelonne",
         pic: "prince_tenebres_01.jpg",
         ownsIt: {

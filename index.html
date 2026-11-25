@@ -244,8 +244,20 @@
         background-color: rgb(102, 78, 81);
     }
 
+    .malvy-filter-color {
+        background-color: rgb(96, 134, 116);
+    }
+
+    .lulu-filter-color {
+        background-color: rgb(133, 96, 134);
+    }
+
     .unselected-filter {
         opacity: 50%;
+    }
+
+    .dot-separator {
+        font-size: 2rem;
     }
 
     .book-number-container {
@@ -257,9 +269,6 @@
         font-family: "Lugrasimo", cursive;
         color: wheat;
         align-items: center;
-    }
-
-    .book-number {
     }
 </style>
 
@@ -282,6 +291,11 @@
             <div id="jeux-filter" class="filter-button unselected-filter jeux-filter-color"
                 onClick="filterBy('JeuxVideos')">Video Games</div>
             <div id="art-filter" class="filter-button unselected-filter art-filter-color" onClick="filterBy('Art')">Art
+            </div>
+            <span class="dot-separator">•</span>
+            <div id="malvy-filter" class="filter-button unselected-filter malvy-filter-color" onClick="filterBy('Malvy')">Malvy
+            </div>
+            <div id="lulu-filter" class="filter-button unselected-filter lulu-filter-color" onClick="filterBy('Lulu')">Lulu
             </div>
         </div>
         <div class="book-number-container">
@@ -423,7 +437,6 @@
         defaultSelection();
 
         collection.forEach(book => {
-            console.log(book.tags.includes("Roman"));
             if (!book.tags.includes("Roman") && filterStatusRoman)
                 book.isDisplayed = false;
             else if (!book.tags.includes("BD & Comics") && filterStatusComics)
@@ -435,6 +448,10 @@
             else if (!book.tags.includes("Jeux Vidéos") && filterStatusJeuxVideos)
                 book.isDisplayed = false;
             else if (!book.tags.includes("Art") && filterStatusArt)
+                book.isDisplayed = false;
+            else if (!book.ownsIt.malvy && filterStatusMalvy)
+                book.isDisplayed = false;
+            else if (!book.ownsIt.lulu && filterStatusLulu)
                 book.isDisplayed = false;
         });
         fillCollection();
@@ -461,29 +478,47 @@
             button.classList.remove("unselected-filter");
             if (!filterStatusComics)
                 button.classList.add("unselected-filter");
-        } if (filter == "Manga") {
+        }
+        if (filter == "Manga") {
             filterStatusManga = !filterStatusManga;
             const button = document.getElementById("manga-filter")
             button.classList.remove("unselected-filter");
             if (!filterStatusManga)
                 button.classList.add("unselected-filter");
-        } if (filter == "Encyclopedie") {
+        }
+        if (filter == "Encyclopedie") {
             filterStatusEncyclopedie = !filterStatusEncyclopedie;
             const button = document.getElementById("encyclopedie-filter")
             button.classList.remove("unselected-filter");
             if (!filterStatusEncyclopedie)
                 button.classList.add("unselected-filter");
-        } if (filter == "JeuxVideos") {
+        }
+        if (filter == "JeuxVideos") {
             filterStatusJeuxVideos = !filterStatusJeuxVideos;;
             const button = document.getElementById("jeux-filter")
             button.classList.remove("unselected-filter");
             if (!filterStatusJeuxVideos)
                 button.classList.add("unselected-filter");
-        } if (filter == "Art") {
+        }
+        if (filter == "Art") {
             filterStatusArt = !filterStatusArt;;
             const button = document.getElementById("art-filter")
             button.classList.remove("unselected-filter");
             if (!filterStatusArt)
+                button.classList.add("unselected-filter");
+        }
+        if (filter == "Malvy") {
+            filterStatusMalvy = !filterStatusMalvy;;
+            const button = document.getElementById("malvy-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusMalvy)
+                button.classList.add("unselected-filter");
+        }
+        if (filter == "Lulu") {
+            filterStatusLulu = !filterStatusLulu;;
+            const button = document.getElementById("lulu-filter")
+            button.classList.remove("unselected-filter");
+            if (!filterStatusLulu)
                 button.classList.add("unselected-filter");
         }
         applyFilter();
@@ -524,6 +559,8 @@
     var filterStatusEncyclopedie = false;
     var filterStatusJeuxVideos = false;
     var filterStatusArt = false;
+    var filterStatusMalvy = false;
+    var filterStatusLulu = false;
 
     var sortedCollection = collection;
     defaultSelection();
